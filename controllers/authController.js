@@ -128,6 +128,10 @@ exports.protect = async (req, res, next) => {
 
     // GRANT ACCESS TO PROTECTED ROUTE
     req.user = currentUser;
+    res.status(200).send({
+      status: 'success',
+      user: currentUser,
+    });
     return next();
   } catch (err) {
     return next(err);

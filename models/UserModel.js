@@ -25,10 +25,14 @@ const userSchema = new mongoose.Schema({
     },
     trim: true,
   },
+  image: {
+    type: String,
+    default: 'default.png'
+  },
   password: {
     type: String,
     required: [true, 'Password required.'],
-    minlength: 8,
+    minlength: 6,
     trim: true,
   },
   passwordConfirm: {

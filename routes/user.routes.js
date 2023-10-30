@@ -9,6 +9,6 @@ router.route('/login').post(authController.login);
 router.route('/forgotPassword').post(authController.forgotPassword);
 router.route('/resetPassword/:token').post(authController.resetPassword);
 
-router.route('/').post(authController.userVerification);
+router.route('/').post(authController.protect);
 
 module.exports = router;

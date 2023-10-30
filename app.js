@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const userRoutes = require('./routes/user.routes');
+const adRoutes = require('./routes/ad.routes');
 const AppError = require('./utils/appError');
 
 const app = express();
@@ -15,10 +16,13 @@ app.use((_, res, next) => {
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   next();
 });
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000'
+}));
 
 // Routes:
 app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/ads', adRoutes);
 
 // Global Error Handling
 app.all('*', (req, _, next) => {
