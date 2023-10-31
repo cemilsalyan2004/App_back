@@ -3,10 +3,13 @@ const mongoose = require('mongoose');
 const AdSchema = new mongoose.Schema({
   profile: {
     type: mongoose.Types.ObjectId,
-    ref: 'User'
+    ref: 'User',
   },
   number: {
-    type: Number
+    type: Number,
+  },
+  showNumber: {
+    type: Boolean,
   },
   images: {
     type: [String],
