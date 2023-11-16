@@ -11,7 +11,12 @@ const AdSchema = new mongoose.Schema({
   showNumber: {
     type: Boolean,
   },
-  images: {
+  poster: {
+    type: String,
+    required: [true, 'Ad image required'],
+    default: ['default.jpg'],
+  },
+  image: {
     type: [String],
     required: [true, 'Ad image required'],
     default: ['default.jpg'],
@@ -24,6 +29,16 @@ const AdSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Ad price required'],
     trim: true,
+  },
+  category: {
+    type: mongoose.Types.ObjectId,
+    ref: 'Ad',
+    required: [true, 'post type required'],
+  },
+  city: {
+    type: mongoose.Types.ObjectId,
+    ref: 'City',
+    required: [true, 'City required'],
   },
   created: {
     type: Date,

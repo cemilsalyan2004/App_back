@@ -1,9 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+// Routes:
 const userRoutes = require('./routes/user.routes');
 const adRoutes = require('./routes/ad.routes');
 const categoryRoutes = require('./routes/category.routes');
+// Error class
 const AppError = require('./utils/appError');
 
 const app = express();
