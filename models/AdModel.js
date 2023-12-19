@@ -32,7 +32,7 @@ const AdSchema = new mongoose.Schema({
   },
   category: {
     type: mongoose.Types.ObjectId,
-    ref: 'Ad',
+    ref: 'Category',
     required: [true, 'post type required'],
   },
   city: {

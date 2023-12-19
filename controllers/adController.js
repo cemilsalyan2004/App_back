@@ -8,6 +8,7 @@ exports.addPost = async (req, res, next) => {
     console.log(req.files[0]);
     const image = files.map((file) => file.filename);
     const { desc, category, city, price, number } = req.body;
+    console.log(category);
     const profile = req.user;
     const post = await Ad.create({
       profile,
@@ -46,6 +47,23 @@ exports.getPosts = async (req, res, next) => {
       status: 'success',
       page: page,
       data: posts,
+    });
+  } catch (err) {
+    return next(new AppError(err));
+  }
+};
+
+exports.getPostById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const post = await Ad.findById(id)
+      .populate('profile')
+      .populate('category')
+      .populate('city');
+    if (!post) return next(new AppError('No post found.', 404));
+    res.status(200).json({
+      status: 'success',
+      data: post,
     });
   } catch (err) {
     return next(new AppError(err));

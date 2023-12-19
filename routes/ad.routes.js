@@ -14,5 +14,6 @@ router
     adController.addPost
   );
 router.route('/getPosts').get(adController.getPosts);
+router.route('/getPostById/:id').get(adController.getPostById)
 
 module.exports = router;
